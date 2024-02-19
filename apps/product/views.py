@@ -1,6 +1,5 @@
 from rest_framework import permissions, status, viewsets
 from rest_framework import generics
-from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
@@ -76,16 +75,13 @@ class ProductFilterListAPIView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class ProductViewSet(viewsets.ModelViewSet):
-    authentication_classes = [TokenAuthentication, SessionAuthentication]
-    permission_classes = [IsAuthenticated]
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    filter_backends = (SearchFilter, OrderingFilter,)
-    search_fields = ['name']
-<<<<<<< HEAD
-=======
-
+# class ProductViewSet(viewsets.ModelViewSet):
+#     authentication_classes = [TokenAuthentication, SessionAuthentication]
+#     permission_classes = [IsAuthenticated]
+#     queryset = Product.objects.all()
+#     serializer_class = ProductSerializer
+#     filter_backends = (SearchFilter, OrderingFilter,)
+#     search_fields = ['name']
 
 class CartAPIView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -115,4 +111,3 @@ class CartResetAPIView(APIView):
         snippet = Cart.objects.get(user_id=id)
         snippet.save()
         return Response({"response": 'reset was successfull'}, status=status.HTTP_200_OK)
->>>>>>> c3a617880011f7403586d0b8a16fb9ab8832ac8f
