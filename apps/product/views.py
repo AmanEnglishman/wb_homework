@@ -116,5 +116,3 @@ class CartResetAPIView(APIView):
         return Response({"response": 'reset was successfull'}, status=status.HTTP_200_OK)
 
 
-def my_custom_view(request):
-    return HttpResponse("This is my custom admin view.")

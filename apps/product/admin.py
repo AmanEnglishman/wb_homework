@@ -1,13 +1,13 @@
 from django.contrib import admin
 
-from .models import MyProduct, product
+from .models import Product, Cart, Category
 
 
-@admin.register(MyProduct)
-class MyProductAdmin(admin.ModelAdmin):
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'email'
+        'name'
     )
     list_display_links = (
         'email',
@@ -23,11 +23,31 @@ class MyProductAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(MyProduct)
-class MyProductAdmin(admin.ModelAdmin):
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'email'
+        'name'
+    )
+    list_display_links = (
+        'email',
+        'id'
+    )
+    list_filter = (
+        'email',
+        'id'
+    )
+    search_fields = (
+        'email',
+        'id'
+    )
+
+
+@admin.Product(Cart)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name'
     )
     list_display_links = (
         'email',
