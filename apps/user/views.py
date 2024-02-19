@@ -30,8 +30,6 @@ class RegisterView(APIView):
             )
             seller.set_password(request.data['password'])
             seller.save()
-            cart = Cart.objects.create(user=seller)
-            cart.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
