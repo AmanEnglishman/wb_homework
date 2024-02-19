@@ -13,6 +13,7 @@ from .views import(
     ProductFilterListAPIView,
     CartAPIView,
     CartUpdateAPIView,
+    CartResetAPIView
 )
 
 urlpatterns = [
@@ -27,6 +28,5 @@ urlpatterns = [
     path('filter/', ProductFilterListAPIView.as_view(), name='product-filter'),
     path('cart/<int:id>', CartAPIView.as_view(), name='cart'),
     path('cart/<int:id>/update/', CartUpdateAPIView.as_view(), name='cart-update'),
-
-
+    path('cart/<int:id>/reset/', CartResetAPIView.as_view(), name='cart-reset'),
 ]
