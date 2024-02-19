@@ -83,3 +83,23 @@ class ProductViewSet(viewsets.ModelViewSet):
     filter_backends = (SearchFilter, OrderingFilter,)
     search_fields = ['name']
 
+
+class CartAPIView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, id):
+        snippet = Cart.objects.get(user_id=id)
+        serializer = CartSerializer(snippet)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class CartUpdateAPIView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def put(self, request, id):
+        snippet = Cart.objects.get(user_id=id)
+        serializer = CartUpdateSerializer(snippet, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
