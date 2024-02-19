@@ -48,3 +48,15 @@ class CategoryCreateAPIView(APIView):
                 Category.objects.get_or_create(name=name)
         return Response({'response': 'created'}, status=status.HTTP_201_CREATED)
 
+class ProductUpdateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Product.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
+
+
+class ProductDeleteAPIView(generics.DestroyAPIView):
+    queryset = Product.objects.all()
+    permission_classes = [IsAuthenticated]
+    serializer_class = ProductSerializer
+    lookup_field = 'pk'
