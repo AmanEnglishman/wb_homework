@@ -48,6 +48,7 @@ class CategoryCreateAPIView(APIView):
                 Category.objects.get_or_create(name=name)
         return Response({'response': 'created'}, status=status.HTTP_201_CREATED)
 
+
 class ProductUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = Product.objects.all()
     permission_classes = [IsAuthenticated]
@@ -82,4 +83,3 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     filter_backends = (SearchFilter, OrderingFilter,)
     search_fields = ['name']
-
