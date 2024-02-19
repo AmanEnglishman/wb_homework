@@ -5,6 +5,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.http import HttpResponse
 
 from .models import Product, Category, Cart
 from .serializers import ProductSerializer, CategorySerializer, ProductCreateSerializer, CartSerializer, \
@@ -47,6 +48,7 @@ class CategoryCreateAPIView(APIView):
                 name = category_data['name']
                 Category.objects.get_or_create(name=name)
         return Response({'response': 'created'}, status=status.HTTP_201_CREATED)
+
 
 class ProductUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = Product.objects.all()
@@ -112,3 +114,7 @@ class CartResetAPIView(APIView):
         snippet = Cart.objects.get(user_id=id)
         snippet.save()
         return Response({"response": 'reset was successfull'}, status=status.HTTP_200_OK)
+
+
+def my_custom_view(request):
+    return HttpResponse("This is my custom admin view.")

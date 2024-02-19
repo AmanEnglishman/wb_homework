@@ -27,3 +27,7 @@ class Product(models.Model):
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     products = models.ManyToManyField(Product)
+
+class MyModel(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()

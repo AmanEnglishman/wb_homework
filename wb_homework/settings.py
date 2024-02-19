@@ -83,6 +83,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wb_homework.wsgi.application'
 
+AUTH_USER_MODEL = 'user.MyUser'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

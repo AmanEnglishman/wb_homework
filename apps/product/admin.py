@@ -1,6 +1,43 @@
 from django.contrib import admin
-from .models import Product, Category, Cart
 
-admin.site.register(Product)
-admin.site.register(Category)
-admin.site.register(Cart)
+from .models import MyProduct, product
+
+
+@admin.register(MyProduct)
+class MyProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'email'
+    )
+    list_display_links = (
+        'email',
+        'id'
+    )
+    list_filter = (
+        'email',
+        'id'
+    )
+    search_fields = (
+        'email',
+        'id'
+    )
+
+
+@admin.register(MyProduct)
+class MyProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'email'
+    )
+    list_display_links = (
+        'email',
+        'id'
+    )
+    list_filter = (
+        'email',
+        'id'
+    )
+    search_fields = (
+        'email',
+        'id'
+    )
