@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'user.MyUser'
+
 
 # Application definition
 
@@ -101,8 +103,8 @@ DATABASES = {
         'NAME': 'wildberries_db',
         'USER': 'postgres',
         'PASSWORD': '1977',
-        'HOST': 'db',
-        'PORT': '5432',
+        'HOST': 'localhost',
+        'PORT': 5432,
 
     }
 }
