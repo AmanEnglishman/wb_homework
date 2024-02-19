@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework_simplejwt.views import TokenObtainPairView
 
-# Create your views here.
+from apps.user.permissions import AnonPermission
+from apps.user.serializers import MyTokenSerializer
+
+
+class LoginAPIView(TokenObtainPairView):
+    permission_classes = (AnonPermission,)
+    serializer_class = MyTokenSerializer
+
+
